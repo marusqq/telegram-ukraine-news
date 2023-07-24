@@ -14,7 +14,7 @@ api_hash = os.getenv('TELEGRAM_API_HASH')
 # Your phone number or bot token
 phone_or_bot_token = os.getenv('PHONE_NUMBER')
 password = os.getenv('PASSWORD')
-target_channel = os.getenv('MY_CHANNEL_ID')
+target_channel = int(os.getenv('MY_CHANNEL_ID'))
 
 # Create a Telethon client
 client = TelegramClient(phone_or_bot_token, api_id, api_hash)
@@ -83,7 +83,7 @@ def split_caption(caption, max_length):
 async def handle_message(event):
     chat_id = event.message.chat_id
     chat_name = event.message.chat.title
-
+    
     if chat_id != target_channel:
 
         print('--------------------------------------------------')
